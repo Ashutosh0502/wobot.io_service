@@ -3,7 +3,7 @@ const product = {};
 
 product.UploadExcel = async (req) => {
     try {
-        await dbHelper.ReadExcel(req.body,req.files);
+        await dbHelper.ReadExcel(req);
     } catch (err) {
         return Promise.reject(err);
     }

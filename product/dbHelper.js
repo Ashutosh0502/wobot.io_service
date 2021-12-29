@@ -6,8 +6,12 @@ const xlsxFile = require('read-excel-file/node');
 
 
 
-productDbHelper.ReadExcel = async (body,files) => {
+productDbHelper.ReadExcel = async (req) => {
     try {
+        
+        const files = req.files;
+        const userId = req.decoded.userId;
+        
         const fileP  = `${process.env.imageStoragePath}/${files[0].originalname}`;
         const rows = await getxmlRows(fileP);
 
@@ -18,7 +22,8 @@ productDbHelper.ReadExcel = async (body,files) => {
                 name: row[0],
                 description: row[1],
                 quantity: row[2],
-                price: row[3]
+                price: row[3],
+                userId : userId
             };
             const productModel = new product(obj);
             await productModel.save();

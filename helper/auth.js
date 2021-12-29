@@ -23,7 +23,9 @@ authService.validateToken = async(req, res, next) => {
 
             users.findOne({ token }).exec().then((u) => {
                 if(u){
-                    req.decoded = result;
+                    req.decoded = result ? result : {};
+                    req.decoded.userId = u._id;
+
                     next();
                 } else{
                     res.status(401).send({ message: 'token expire' });

@@ -5,7 +5,7 @@ var controller = require('./controller');
 import upload from '../helper/upload';
 const authenticator = require('../helper/auth');
 
-router.post('/UploadExcel',upload.saveImage,authenticator.validateToken,(req, res, next) => { 
+router.post('/UploadExcel',upload.saveFile,authenticator.validateToken,(req, res, next) => { 
     return controller.UploadExcel(req)
             .then((success) => res.status(200).send('File is saved'))
             .catch((err) => next(err));

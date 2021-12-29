@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
 /*
  * saves the image files
  */  
-uploadFile.saveImage = (req, res, next) => {
+uploadFile.saveFile = (req, res, next) => {
   count = 0;
   upload(req, res, (err) => {
     if (err) return Promise.reject(err);

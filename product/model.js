@@ -17,10 +17,10 @@ const productSchema = new Schema({
         type: Number,
         required: true
     },
-    // userId: {         
-    //     type: String,
-    //     required: true
-    // },
+    userId: {         
+        type: String,
+        required: true
+    },
 
     createdDate: {      
         type: Date,
