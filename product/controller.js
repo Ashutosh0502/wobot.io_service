@@ -9,4 +9,13 @@ product.UploadExcel = async (req) => {
     }
 }
 
+
+product.getAll = async () => {
+    try {
+        return await dbHelper.getAll();
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
+
 module.exports = product;

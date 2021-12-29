@@ -39,4 +39,20 @@ const getxmlRows = async (fileP) => {
     });
 }
 
+
+
+productDbHelper.getAll = async () => {
+    try {
+        return product.find({})
+            .exec()
+            .then((results) => {
+                return results.map((result) => {
+                    return result;
+                });
+            });
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
+
 module.exports = productDbHelper;

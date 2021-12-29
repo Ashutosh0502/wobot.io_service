@@ -11,4 +11,10 @@ router.post('/UploadExcel',upload.saveImage,(req, res, next) => {
             .catch((err) => next(err));
 });
 
+router.get('/getProductList',authenticator.validateToken,(req, res, next) => {
+    return controller.getAll().then((results) => {
+        return res.status(200).json({ data: results });
+    }).catch((err) => next(err));
+});
+
 module.exports = router;

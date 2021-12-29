@@ -19,14 +19,14 @@ router.post('/login', (req, res, next) => {
     });
 });
 
-router.get('/getUserList', (req, res, next) => {
+router.get('/getUserList',authenticator.validateToken,(req, res, next) => {
     return controller.getUserList().then((results) => {
         return res.status(200).json({ data: results });
     }).catch((err) => next(err));
 });
 
 
-router.get('/getUserDetailsById/:id', (req, res, next) =>{
+router.get('/getUserDetailsById/:id',authenticator.validateToken, (req, res, next) =>{
     return controller.getUserDetailsById(req.params.id).then((results) => {
         return res.status(200).json({ data: results });
     }).catch((err) => next(err));
